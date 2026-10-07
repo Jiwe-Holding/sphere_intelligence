@@ -1,0 +1,9 @@
+# Runs the image published to the registry. Site is exposed on port 5181.
+# IMAGE is set by the CI/CD deploy step (e.g. ghcr.io/jiwe-holding/sphere_intelligence:<sha>).
+services:
+  web:
+    image: ${IMAGE:-ghcr.io/jiwe-holding/sphere_intelligence:latest}
+    container_name: sphere-intelligence
+    restart: unless-stopped
+    ports:
+      - "5181:80"
